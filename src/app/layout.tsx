@@ -1,3 +1,5 @@
+import { ClerkProvider } from '@clerk/nextjs'
+
 import "@/styles/globals.css";
 
 import { cookies } from "next/headers";
@@ -18,6 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
         className={cn("min-h-[100dvh] font-sans antialiased", inter.variable)}
@@ -27,5 +30,6 @@ export default function RootLayout({
         </TRPCReactProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
