@@ -2,7 +2,7 @@
 
 This is a _Holigift_ app made for people to manage their wishlists.
 
-## What's next? How do I make an app with this?
+## What it's built with?
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs.
 
