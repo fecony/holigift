@@ -23,6 +23,7 @@ export const env = createEnv({
         (str) => !str.includes("YOUR_CLERK_SECRET_KEY_HERE"),
         "You forgot to change the default clerk secret key",
       ),
+    CLERK_WEBHOOK_SECRET: z.string().min(1),
   },
 
   /**
@@ -37,6 +38,10 @@ export const env = createEnv({
         (str) => !str.includes("YOUR_NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY_HERE"),
         "You forgot to change the default clerk publishable key",
       ),
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL: z.string().min(1),
+    NEXT_PUBLIC_CLERK_SIGN_UP_URL: z.string().min(1),
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL: z.string().min(1),
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: z.string().min(1),
   },
 
   /**
@@ -49,6 +54,13 @@ export const env = createEnv({
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
+    NEXT_PUBLIC_CLERK_SIGN_UP_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL,
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL:
+      process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL:
+      process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL,
+    CLERK_WEBHOOK_SECRET: process.env.CLERK_WEBHOOK_SECRET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

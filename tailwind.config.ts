@@ -5,6 +5,9 @@ export default {
   darkMode: "class",
   content: ["./src/**/*.tsx"],
   theme: {
+    backgroundImage: {
+      "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -57,6 +60,13 @@ export default {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       keyframes: {
+        wiggle: {
+          "0%": { transform: "rotate(10deg)" },
+          "25%": { transform: "rotate(-10deg)" },
+          "50%": { transform: "rotate(20deg)" },
+          "75%": { transform: "rotate(-5deg)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -69,6 +79,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        wiggle: "wiggle .5s ease-in-out",
       },
     },
   },

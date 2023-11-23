@@ -1,4 +1,4 @@
-import { mysqlTable } from "./table";
+import { mysqlTable } from "../table";
 
 export const tag = mysqlTable("tag", {
   // id
