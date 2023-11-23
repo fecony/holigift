@@ -8,7 +8,7 @@ import { clerkEvent } from "@/server/api/routers/clerk/eventType.schema";
 import { appRouter } from "@/server/api/root";
 
 const WEBHOOK_SECRET = env.CLERK_WEBHOOK_SECRET;
-
+export const dynamic = "force-dynamic";
 export async function POST(
   req: NextRequest & {
     headers: IncomingHttpHeaders & WebhookRequiredHeaders;
@@ -57,7 +57,7 @@ export async function POST(
 
     default:
       console.error(`${event as string} is not a valid event`);
-      return null;
+      return new Response("", { status: 200 });
   }
 
   return NextResponse.json({ success: true });

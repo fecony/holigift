@@ -16,11 +16,18 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="h-full w-full max-w-3xl">
-      <div className="flex flex-col gap-y-6">
-        {profile.wishlistItems.map((item) => (
-          <div key={item.id}>{item.title}</div>
-        ))}
+    <div className="flex h-full w-full flex-col items-center">
+      <div className="flex flex-col gap-y-8">
+        <div className="flex w-full items-center justify-between">
+          <h1 className="font-sans text-3xl font-bold md:text-4xl">
+            {username}&apos;s Wishlist
+          </h1>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {profile.wishlistItems.map((item) => (
+            <div key={item.id}>{item.title}</div>
+          ))}
+        </div>
       </div>
     </div>
   );

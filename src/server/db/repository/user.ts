@@ -14,7 +14,9 @@ export const getProfileByUsername = async (username: string) => {
   return db.query.user.findFirst({
     where: (user, { eq }) => eq(user.username, username),
     with: {
-      wishlistItems: true,
+      wishlistItems: {
+        where: (wishlistItem, { eq }) => eq(wishlistItem.isPublic, true),
+      },
     },
   });
 };
