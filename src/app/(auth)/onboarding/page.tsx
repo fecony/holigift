@@ -1,26 +1,26 @@
-import { redirect } from "next/navigation";
-import { currentUser } from "@clerk/nextjs";
-import { IconNorthStar } from "@tabler/icons-react";
-import { api } from "@/trpc/server";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import OnboardingForm from "@/components/form/onboarding-form";
+import OnboardingForm from '@/components/form/onboarding-form';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { api } from '@/trpc/server';
+import { currentUser } from '@clerk/nextjs';
+import { IconNorthStar } from '@tabler/icons-react';
+import { redirect } from 'next/navigation';
 
 export default async function Page() {
   const user = await currentUser();
 
   if (!user) {
-    return redirect("/auth/sign-in");
+    return redirect('/auth/sign-in');
   }
 
   const userDetails = await api.user.me.query();
 
   if (!userDetails) {
-    return redirect("/auth/sign-up");
+    return redirect('/auth/sign-up');
   }
 
   if (userDetails?.isOnboarded) {
-    return redirect("/dashboard");
+    return redirect('/dashboard');
   }
 
   return (
@@ -35,13 +35,13 @@ export default async function Page() {
         </AlertDescription>
       </Alert>
 
-      <div className="border-border bg-background flex flex-col gap-y-6 rounded-lg border px-4 py-4 md:px-6 md:py-6">
+      <div className="flex flex-col gap-y-6 rounded-lg border border-border bg-background px-4 py-4 md:px-6 md:py-6">
         <div className="flex flex-row items-center space-x-4">
           <Avatar className="self-start rounded text-right">
             <AvatarImage src={user?.imageUrl} />
             <AvatarFallback className="rounded uppercase">
               {user.firstName?.charAt(0)}
-              {user.lastName?.split("").pop()}
+              {user.lastName?.split('').pop()}
             </AvatarFallback>
           </Avatar>
 
